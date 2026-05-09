@@ -33,10 +33,10 @@ async function fetchPrice(code) {
   const res = await fetch(url);
   const data = await res.json();
   if (!data.success || !data.data || !data.data[code]) return null;
-  const const entries = data.data[code];
-const prices = Object.values(entries);
-if (!prices.length) return null;
-const best = prices.sort((a, b) => a.price - b.price)[0];
+  const entries = data.data[code];
+  const prices = Object.values(entries);
+  if (!prices.length) return null;
+  const best = prices.sort((a, b) => a.price - b.price)[0];
   return {
     price: best.price,
     airline: best.airline || "Various",
@@ -47,7 +47,7 @@ const best = prices.sort((a, b) => a.price - b.price)[0];
 }
 
 app.get("/api/deals", async (req, res) => {
-  if (!TOKEN) return res.status(500).json({ ok: false, error: "TRAVELPAYOUTS_TOKEN not set in Railway Variables" });
+  if (!TOKEN) return res.status(500).json({ ok: false, error: "TRAVELPAYOUTS_TOKEN not set" });
   try {
     const results = await Promise.all(
       ROUTES.map(async (r) => {
