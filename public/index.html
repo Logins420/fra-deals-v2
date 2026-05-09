@@ -134,7 +134,8 @@ async function load(){
     render();
   }catch(e){
     document.getElementById("content").innerHTML=
-      '<div class="err-box">Could not load deals.<br>Check that TRAVELPAYOUTS_TOKEN is set in Railway Variables.<br>Error: '+e.message+'</div>';
+      '<div class="ai-panel'+(ai?" on":"")+'\" id="ap-'+d.to+'">'+
+
   }
 }
 
