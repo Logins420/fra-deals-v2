@@ -33,9 +33,10 @@ async function fetchPrice(code) {
   const res = await fetch(url);
   const data = await res.json();
   if (!data.success || !data.data || !data.data[code]) return null;
-  const prices = Object.values(data.data[code]);
-  if (!prices.length) return null;
-  const best = prices.sort((a, b) => a.price - b.price)[0];
+  const const entries = data.data[code];
+const prices = Object.values(entries);
+if (!prices.length) return null;
+const best = prices.sort((a, b) => a.price - b.price)[0];
   return {
     price: best.price,
     airline: best.airline || "Various",
