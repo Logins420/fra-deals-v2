@@ -28,7 +28,7 @@ const ROUTES = [
   { to:"MEL", city:"Melbourne",    region:"Oceania",       flag:"🇦🇺" },
 ];
 
-async function fetchPrice(code) {
+  async function fetchPrice(code) {
   const url = "https://api.travelpayouts.com/v1/prices/cheap?origin=FRA&destination=" + code + "&currency=eur&token=" + TOKEN;
   const res = await fetch(url);
   const data = await res.json();
